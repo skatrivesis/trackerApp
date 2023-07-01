@@ -14,6 +14,21 @@ CREATE TABLE Models (
     pComplete TEXT
     )
     ''')
+class Entry:
+    #Initialize the object
+    def __init__(self, type, status, complete):
+        self.type = type
+        self.status = status
+        self.complete = complete
+
+    #returns the object as a string
+    def __str__(self) -> str:
+        return f"{self.type}{self.status}{self.complete}"
+
+e1 = Entry("","","")
+
+print("Value of e1>>")
+print(e1)
 
 fname = input('Enter file name: ')
 if (len(fname) < 1): fname = 'trackerApp.txt'
@@ -26,25 +41,28 @@ for line in fh:
     if line.startswith('pType: '): 
         print(line)
         piecesT = line.split()
-        pType = piecesT[1]
+        e1.type = piecesT[1]
         continue
     elif line.startswith('pStatus: '): 
         piecesS = line.split()
-        pStatus = piecesS[1]
+        e1.status = piecesS[1]
         print(line)
         continue
     # SOMETHING IS WRONG WITH THE BELOW ELIF, ONCE ITS UNCOMMENTED THE DATABASE DOESNT SHOW ANYTHING AT ALL
-    # elif line.startswith('pComplete: '): 
-    #     piecesC = line.split()
-    #     pComplete = piecesC[1]
-    #     print(line)
-    #     continue
-    
+    elif line.startswith('pComplete: '): 
+        piecesC = line.split()
+        e1.complete = piecesC[1]
+        print(line)
+
+
+print(e1.status)
+
+
 
     # row = cur.fetchone()
     # if row is None: 
-    cur.execute('''INSERT OR REPLACE INTO Models (pType, pStatus) 
-    VALUES ( ?, ?)''', ( pType, pStatus) )
+    # cur.execute('''INSERT OR REPLACE INTO Models (pType, pStatus) 
+    # VALUES ( ?, ?)''', ( pType, pStatus) )
     # else:
     #     cur.execute('UPDATE Models SET count = count + 1 WHERE pType = ?',
     #                  (pType,))
@@ -72,7 +90,7 @@ for line in fh:
     #     ( name, album_id, genre_id, length, rating, count ) )
  # -----------------------------------------------------------------
 
-conn.commit()
+# conn.commit()
 
 # sqlstr = 'SELECT pType, count FROM Models ORDER BY count DESC LIMIT 10'
 
