@@ -1,9 +1,9 @@
 
 fname = input('Enter file name: ')
-if (len(fname) < 1): fname = 'trackerApp.txt'
+if (len(fname) < 1): fname = 'trackerApp/trackerApp.txt'
 fh = open(fname)
 
-class Plastic:
+class Unit:
     num_of_plastics = 0
 
     def __init__(self, type, status, complete):
@@ -11,28 +11,31 @@ class Plastic:
         self.status = status
         self.complete = complete
     
-        Plastic.num_of_plastics += 1
+        Unit.num_of_plastics += 1
     def __str__(self):
         return '\nType: ' + str(self.type) + '\nStatus: ' + str(self.status) + '\nComplete: ' + str(self.complete)
 
 
-modellist = []
+modelList = []
 for line in fh:
-    if line.startswith('pType: '): 
+    if line.startswith('type: '): 
         line = line.split()
-        pType = line[1]
+        type = line[1]
         continue
-    elif line.startswith('pStatus: '): 
+    elif line.startswith('status: '): 
         line = line.split()
-        pStatus = line[1]
+        status = line[1]
         continue
-    elif line.startswith('pComplete: '): 
+    elif line.startswith('complete: '): 
         line = line.split()
-        pComplete = line[1]
+        complete = line[1]
 
-    Models = Plastic(pType,pStatus,pComplete)
+    Models = Unit(type,status,complete)
     print(Models)
-    modellist.append(Models)
+    modelList.append(Models)
 
 fh.close()
-print('Number of total objects: ', Plastic.num_of_plastics)
+print('Number of total objects: ', Unit.num_of_plastics)
+
+for model in modelList:
+    print(model)
