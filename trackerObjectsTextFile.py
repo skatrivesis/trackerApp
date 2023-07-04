@@ -15,6 +15,7 @@ class Plastic:
     def __str__(self):
         return '\nType: ' + str(self.type) + '\nStatus: ' + str(self.status) + '\nComplete: ' + str(self.complete)
 
+
 modellist = []
 for line in fh:
     if line.startswith('pType: '): 
