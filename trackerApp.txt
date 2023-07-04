@@ -1,24 +1,35 @@
-type: grunt
-status: uncolored
+faction: Sylvaneth
+unit name: Dryads
+qty: 10
+notes: primed
 complete: no
-type: grunt
-status: primed
-complete: no
-type: grunt
-status: primed
-complete: no
-type: grunt
-status: primed
-complete: no
-type: captain
-status: uncolored
-complete: no
-type: captain
-status: primed
-complete: no
-type: flyer
-status: clored
+faction: Kharadron OverLords
+unit name: Frigate
+qty: 10
+notes: none
 complete: yes
-type: captain
-status: clored
-complete: yes
+faction: Kharadron OverLords
+unit name: EndrinRiggers
+qty: 3
+notes: basing needed
+complete: no
+faction: Kharadron OverLords
+unit name: Endrinemaster with Dirigible suit
+qty: 1
+notes: funny story here, this is a man with a plan
+complete: no
+faction: Kharadron OverLords
+unit name: Ark. Admiral
+qty: 1
+notes: basing needed
+complete: no
+faction: Adeptus Astartes
+unit name: Redemptor Dreadnaught
+qty: 1
+notes: thinking about building this
+complete: no
+faction: Adeptus Astartes
+unit name: Outriders
+qty: 3
+notes: none
+complete: no
