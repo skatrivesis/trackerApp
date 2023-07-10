@@ -33,3 +33,8 @@ unit name: Outriders
 qty: 3
 notes: none
 complete: no
+faction: Adeptus Astartes
+unit name: Gay Robot Man
+qty: 1
+notes: 
+complete: 
