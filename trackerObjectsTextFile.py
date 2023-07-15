@@ -4,7 +4,7 @@
 # - Take a look at notes and fix things that I have brought up. 
 # - input data from user to append text file in full entry form
 # - **ONLY DO THIS WHEN YOU HAVE DONE EVERYTHING ABOVE. I WANT THIS TO BE LAST ON THE TODO LIST** We need to put null checks in. This is to ensure if a field coming in from the data is empty (null) then we can handle the data without the program bombing out
-# TOM: for obove, I put in another entry with blank spaces and the program still works. When in a data base these entries will be italisized and say Null
+# TOM: for above, I put in another entry called Gay Robot Man with blank spaces and the program still works. When this is put in a data base these entries will be italisized and say Null
 fname = 'trackerApp/trackerapp.txt'
 fh = open(fname)
 
@@ -19,12 +19,16 @@ class Unit:
         self.complete = complete
     
         Unit.num_of_entries += 1 # COMPLETE please see note on line 12
+
     def __str__(self):
         return '\nFaction: ' + str(self.faction) + '\nUnit: ' + str(self.unitName) + '\nQuantity: ' + str(self.qty) + '\nNotes: ' + str(self.notes) + '\nComplete: ' + str(self.complete)
 
 num_Of_Units = 0
 num_Of_Units_Lst = [] # COMPLETE Need to turn list into integers to count
 unit_Entry_List = []
+
+
+
 for line in fh:
     if line.startswith('faction: '): 
         line = line.split()
@@ -55,13 +59,39 @@ for line in fh:
     unit_Entry_List.append(Units)
 
 fh.close()
-# TOM NOTES This converts the number of units list from str to int and then adds them 
-[int(str_Units)for str_Units in num_Of_Units_Lst]
-for int_Units in num_Of_Units_Lst:
-    num_Of_Units = num_Of_Units + int(int_Units)    
 
-for unit in unit_Entry_List:
-    print(unit)
+# TOM NOTE: This is the menu prompt, we currently have three options and the program only stops when you done in the main prompt
 
-print('\nNumber of total Models: ', num_Of_Units ) # COMPLETE needs to count units
-print('Number of total Entries: ', Unit.num_of_entries) # COMPLETE change var name to reflect entries instead of models
+while True:
+    prompt = input('\nWhat would you like to do? See units or add units or done? >>> ').lower()
+    if prompt == 'done':
+        break
+    if prompt == 'add units':
+
+        entryNum = int(input('\nhow many entries do you want to put in?: ')) 
+
+        while entryNum > 0:
+            faction = input('faction: ')
+            unitName = input('unit name: ')
+            qty = int(input('quantity: '))
+            notes = input('notes: ')
+            complete = input('complete: ')
+            if entryNum > 1: print('\n>>>New Entry>>>')
+            entryNum = entryNum-1
+
+            Units = Unit(faction, unitName, qty, notes, complete)
+            num_Of_Units_Lst.append(qty)
+            unit_Entry_List.append(Units)
+            continue
+
+    if prompt == 'see units':
+        print('>>>ALL ENTRIES>>>')
+        for unit in unit_Entry_List:
+            print(unit)
+ 
+        [int(str_Units)for str_Units in num_Of_Units_Lst]
+        for int_Units in num_Of_Units_Lst:
+            num_Of_Units = num_Of_Units + int(int_Units)    
+
+        print('\nNumber of total Models: ', num_Of_Units ) # COMPLETE needs to count units
+        print('Number of total Entries: ', Unit.num_of_entries) # COMPLETE change var name to reflect entries instead of models
