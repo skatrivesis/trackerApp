@@ -63,17 +63,32 @@ fh.close()
 # TOM NOTE: This is the menu prompt, we currently have three options and the program only stops when you done in the main prompt
 
 while True:
-    prompt = input('\nWhat would you like to do? See units or add units or done? >>> ').lower()
+    prompt = input("\nWhat would you like to do? 'See units' or 'add units' or 'done'? >>> ").lower()
     if prompt == 'done':
         break
     if prompt == 'add units':
+        
+        while True:
+            try: 
+                entryNum = int(input('\nhow many entries do you want to put in?: ')) 
+                break
+            except ValueError:
+                print('\nYou entered a non integer value, try again.')
+                continue
 
-        entryNum = int(input('\nhow many entries do you want to put in?: ')) 
 
         while entryNum > 0:
             faction = input('faction: ')
             unitName = input('unit name: ')
-            qty = int(input('quantity: '))
+
+            while True:
+                try: 
+                    qty = int(input('quantity: ')) 
+                    break
+                except ValueError:
+                    print('\nYou entered a non integer value, try again.')
+                    continue
+
             notes = input('notes: ')
             complete = input('complete: ')
             if entryNum > 1: print('\n>>>New Entry>>>')
