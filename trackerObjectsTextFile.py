@@ -5,9 +5,11 @@
 # - input data from user to append text file in full entry form
 # - **ONLY DO THIS WHEN YOU HAVE DONE EVERYTHING ABOVE. I WANT THIS TO BE LAST ON THE TODO LIST** We need to put null checks in. This is to ensure if a field coming in from the data is empty (null) then we can handle the data without the program bombing out
 # TOM: for above, I put in another entry called Gay Robot Man with blank spaces and the program still works. When this is put in a data base these entries will be italisized and say Null
+
+from readchar import readkey, key
+
 fname = 'trackerApp/trackerapp.txt'
 fh = open(fname, "r+")
-
 
 class Unit:
     num_of_entries = 0 
@@ -66,13 +68,13 @@ for line in fh:
 
 
 # TOM NOTE: Menu and write file loops
-
 while True:
-    prompt = input("\nWhat would you like to do? 'See units' or 'add units' or 'done'? >>> ").lower()
-    if prompt == 'done':
+    print("\nWhat would you like to do?\nPress '1' to close program\nPress '2' to add units\nPress '3' to see all units")
+    prompt = readkey()
+    if prompt == '1':
         break
-    if prompt == 'add units':
-        
+    if prompt == '2':
+        prompt = 0
         while True:
             try: 
                 entryNum = int(input('\nhow many entries do you want to put in?: ')) 
@@ -117,13 +119,11 @@ while True:
             unit_Entry_List.append(Units)
             continue
 
-    if prompt == 'see units':
+    if prompt == '3':
         print('>>>ALL ENTRIES>>>')
         for unit in unit_Entry_List:
             print(unit)
          
- # Need to fix below, number of total models is counting everytime see units is called
- # also need to fix menu to make it numerical key stroke
     num_Of_Units = 0
     [int(str_Units)for str_Units in num_Of_Units_Lst]
     for int_Units in num_Of_Units_Lst: 
