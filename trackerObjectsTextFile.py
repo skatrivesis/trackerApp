@@ -8,7 +8,7 @@
 
 from readchar import readkey, key
 
-fname = 'trackerApp/trackerapp.txt'
+fname = 'trackerapp.txt'
 fh = open(fname, "r+")
 
 class Unit:
